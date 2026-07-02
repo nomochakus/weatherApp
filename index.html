@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkyCast Weather</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🌤️ SkyCast</h1>
+        <p>Real-time weather forecasts powered by Open-Meteo</p>
+      </header>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="cityInput"
+          placeholder="Enter city name (e.g., London, Tokyo, New York)..."
+          autocomplete="off"
+        />
+        <button onclick="searchWeather()">Search</button>
+        <button
+          class="locate-btn"
+          onclick="getLocation()"
+          title="Use my location"
+        >
+          📍
+        </button>
+      </div>
+
+      <div class="error" id="errorMsg"></div>
+      <div class="loading" id="loading">⏳ Loading weather data...</div>
+
+      <div id="weatherContent" class="hidden">
+        <div class="weather-grid">
+          <div class="card current-weather">
+            <div class="city-name" id="cityName">--</div>
+            <div class="weather-icon" id="weatherIcon">☀️</div>
+            <div class="temp" id="currentTemp">--°</div>
+            <div class="condition" id="condition">--</div>
+            <div class="details">
+              <div class="detail-item">
+                <div class="label">Feels Like</div>
+                <div class="value" id="feelsLike">--°</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Humidity</div>
+                <div class="value" id="humidity">--%</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">Wind</div>
+                <div class="value" id="wind">-- km/h</div>
+              </div>
+              <div class="detail-item">
+                <div class="label">UV Index</div>
+                <div class="value" id="uvIndex">--</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card forecast-card">
+            <h3>📅 7-Day Forecast</h3>
+            <div class="forecast-list" id="forecastList"></div>
+          </div>
+
+          <div class="card forecast-card">
+            <h3>📊 Today's Highlights</h3>
+            <div class="forecast-list" id="highlightsList"></div>
+          </div>
+
+          <div class="card hourly-chart">
+            <h3>📈 24-Hour Temperature</h3>
+            <div class="chart-container">
+              <canvas id="tempChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
